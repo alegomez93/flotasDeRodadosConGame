@@ -121,7 +121,7 @@ Otra forma de crear una instancia de `Position` es usando el objeto `game`: `gam
 
 Agregar lo que haga falta en la clase que modela a los Corsa para que puedan responder a las consultas
 - `pasoPor(posicion)`, o sea, si alguna vez estuvo en esa posición. Ayuda: hay que agregar algo en el método que cambia la posición.
-- `pasoPorFila(numero)`, la fila es el "x" de las posiciones. P.ej. si las posiciones en donde estuvo `cachito` fueron `(3,5)`, `(3.6)`, `(3,7)` y `(4,7)`, entonces pasó por las filas 5,6 y 7, y ninguna otra.
+- `pasoPorFila(numero)`, la fila es el "y" de las posiciones. P.ej. si las posiciones en donde estuvo `cachito` fueron `(3,5)`, `(3.6)`, `(3,7)` y `(4,7)`, entonces pasó por las filas 5,6 y 7, y ninguna otra.
 - `recorrioFilas(lista_de_numeros)`, o sea, si pasó por todas las filas en la lista. P.ej. `cachito.recorrioFilas([3,4,5])` tiene que dar `true` si `cachito` pasó por la fila 3, por la 4 y por la 5.
 
 **Atenti**  
