@@ -1,7 +1,65 @@
 import wollok.game.*
+import rodados.*
+import colores.*
+import paredes.*
 
-program corsasEnElGame {
-	// hacer las inicializaciones necesarias 
+program corsasEnElGame 
+{
+	
+	game.title("Auto Rojo")
+	game.height(10)
+	game.width(10)
+	game.ground("tierra.jpg")
+	
+	const auto1 = new Corsa(color = rojo, position = new Position(x = 1 , y = 2))
+	const auto2 = new Corsa(color = verde, position = new Position(x = 1 , y = 3))
+	const auto3 = new Corsa(color = azul, position = new Position(x = 1 , y = 4))
+	
+	const pared1 = new Paredes(image = "1.png", position = new Position(x = 5 , y = 4), energia = 2)
+	const pared2 = new Paredes(image = "3.png", position = new Position(x = 8 , y = 7), energia = 4)
+	const pared3 = new Paredes(image = "5.png", position = new Position(x = 2 , y = 6), energia = 6)
+	
+	autoActivo.agregarAuto(auto1)
+	autoActivo.agregarAuto(auto2)
+	autoActivo.agregarAuto(auto3)
+
+	
+	game.addVisual(auto1)
+	game.addVisual(auto2)
+	game.addVisual(auto3)
+	game.addVisual(pared1)
+	game.addVisual(pared2)
+	game.addVisual(pared3)
+	
+	var autoControlado
+	
+	
+	keyboard.num1().onPressDo({autoControlado = autoActivo.controlAuto(0)})
+	
+	keyboard.num2().onPressDo({autoControlado = autoActivo.controlAuto(1)})
+	
+	keyboard.num3().onPressDo({autoControlado = autoActivo.controlAuto(2)})
+	
+	keyboard.num4().onPressDo({autoControlado = modoTodos})
+
+	
+	keyboard.up().onPressDo({autoControlado.up()})
+	
+	keyboard.down().onPressDo({autoControlado.down()})
+	
+	keyboard.left().onPressDo({autoControlado.left()})
+	
+	keyboard.right().onPressDo({autoControlado.right()})
+	
+	keyboard.r().onPressDo({autoControlado.color(rojo)})
+	
+	keyboard.v().onPressDo({autoControlado.color(verde)})
+	
+	keyboard.z().onPressDo({autoControlado.color(azul)})
+	
+	game.whenCollideDo(auto1, { elem => auto1.chocarUna(elem) })
+	game.whenCollideDo(auto2, { elem => auto2.chocarUna(elem) })
+	game.whenCollideDo(auto3, { elem => auto3.chocarUna(elem) })
 	
 	game.start()
 }
